@@ -7,4 +7,21 @@
         <LangVersion>10</LangVersion>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\..\Contracts\Contracts.csproj" />
+      <ProjectReference Include="..\ShaderService.Application\ShaderService.Application.csproj" />
+      <ProjectReference Include="..\ShaderService.Domain\ShaderService.Domain.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.33" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.33">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.2" />
+      <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.11" />
+      <PackageReference Include="RabbitMQ.Client" Version="7.2.2" />
+    </ItemGroup>
+
 </Project>

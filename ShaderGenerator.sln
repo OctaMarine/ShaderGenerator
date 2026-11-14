@@ -4,11 +4,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contracts", "Contracts\Cont
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UserService", "UserService", "{6FC035A5-56F1-46D8-87F4-B372DE9CE794}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserService.App", "UserService\UserService.App\UserService.App.csproj", "{A451CAEB-E423-4B9D-A31A-A26E6375D885}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserService.Api", "UserService\UserService.Api\UserService.Api.csproj", "{A451CAEB-E423-4B9D-A31A-A26E6375D885}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ShaderService", "ShaderService", "{EEF14B1D-1C8F-43EB-8D29-69E0B437270E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShaderService.App", "ShaderService\ShaderService.App\ShaderService.App.csproj", "{55B71B6E-2289-43AC-91B6-093341E8AE14}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShaderService.Api", "ShaderService\ShaderService.Api\ShaderService.Api.csproj", "{55B71B6E-2289-43AC-91B6-093341E8AE14}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShaderService.Domain", "ShaderService\ShaderService.Domain\ShaderService.Domain.csproj", "{5EBEE5C1-B6BF-48B0-A398-1888361D672D}"
 EndProject

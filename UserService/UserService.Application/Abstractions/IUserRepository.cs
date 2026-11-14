@@ -1,6 +1,6 @@
 ﻿using UserService.Domain.Entities;
 
-namespace UserService.Application;
+namespace UserService.Application.Abstractions;
 
 public interface IUserRepository
 {
@@ -10,5 +10,8 @@ public interface IUserRepository
 
     Task<User?> GetByIdAsync(
         Guid id,
+        CancellationToken cancellationToken);
+    Task<User?> GetByLoginAsync(
+        string login,
         CancellationToken cancellationToken);
 }
