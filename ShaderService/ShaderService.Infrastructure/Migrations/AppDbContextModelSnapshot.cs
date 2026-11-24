@@ -31,10 +31,13 @@ namespace ShaderService.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<string>("Prompt")
+                    b.Property<string>("FragmentShaderCode")
                         .HasColumnType("text");
 
-                    b.Property<string>("ShaderCode")
+                    b.Property<string>("GeometryType")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Prompt")
                         .HasColumnType("text");
 
                     b.Property<int>("Status")
@@ -42,6 +45,9 @@ namespace ShaderService.Infrastructure.Migrations
 
                     b.Property<Guid>("UserId")
                         .HasColumnType("uuid");
+
+                    b.Property<string>("VertexShaderCode")
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 

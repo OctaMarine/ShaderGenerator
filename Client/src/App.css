@@ -1,0 +1,204 @@
+.app-container {
+  min-height: 100vh;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  gap: 20px;
+  padding: 40px 20px;
+
+  background: #111827;
+  color: #f3f4f6;
+}
+
+/* Общие панели */
+
+.login-form,
+.user-panel,
+.shader-form,
+.shader-result {
+  width: 100%;
+  max-width: 700px;
+
+  padding: 28px;
+  border: 1px solid #374151;
+  border-radius: 14px;
+
+  background: #1f2937;
+}
+
+/* Login */
+
+.login-form {
+  max-width: 420px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.login-form h2 {
+  margin: 0 0 8px;
+  text-align: center;
+}
+
+.login-form label,
+.shader-form label {
+  font-size: 14px;
+  color: #d1d5db;
+}
+
+.login-form input,
+.shader-form textarea {
+  width: 100%;
+  padding: 13px 14px;
+
+  border: 1px solid #4b5563;
+  border-radius: 8px;
+
+  outline: none;
+  background: #111827;
+  color: #f9fafb;
+
+  font-size: 15px;
+  transition: border-color 0.2s;
+}
+
+.login-form input:focus,
+.shader-form textarea:focus {
+  border-color: #3b82f6;
+}
+
+/* Кнопки */
+
+.login-form button,
+.user-panel button,
+.shader-form button {
+  padding: 13px 18px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: #2563eb;
+  color: white;
+
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.login-form button:hover,
+.user-panel button:hover,
+.shader-form button:hover {
+  background: #1d4ed8;
+}
+
+.login-form button:disabled,
+.shader-form button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Панель пользователя */
+
+.user-panel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.user-panel h2 {
+  margin: 0;
+  font-size: 20px;
+}
+
+/* Генератор */
+
+.shader-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.shader-form h2,
+.shader-result h2 {
+  margin: 0;
+}
+
+.shader-form textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* Результат */
+
+.shader-result {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.shader-result pre {
+  width: 100%;
+  margin: 0;
+  padding: 20px;
+
+  overflow-x: auto;
+
+  border: 1px solid #374151;
+  border-radius: 8px;
+
+  background: #111827;
+}
+
+.shader-result code {
+  color: #a7f3d0;
+  font-family: Consolas, monospace;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.error-message {
+  color: #f87171;
+}
+
+/* Мобильные устройства */
+
+@media (max-width: 600px) {
+  .app-container {
+    padding: 20px 12px;
+  }
+
+  .login-form,
+  .user-panel,
+  .shader-form,
+  .shader-result {
+    padding: 20px;
+  }
+
+  .user-panel {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+.shader-preview {
+  width: 100%;
+  height: 480px;
+
+  overflow: hidden;
+
+  border: 1px solid #374151;
+  border-radius: 12px;
+
+  background: #080d18;
+}
+
+.shader-preview canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}

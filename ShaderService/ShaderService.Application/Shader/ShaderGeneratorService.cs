@@ -16,8 +16,9 @@ public class ShaderGeneratorService
         _shaderRepository = shaderRepository;
         _publisher = publisher;
     }
-    
-    public async Task<Guid> CreateAsync(Guid userId,
+
+    public async Task<Guid> GenerateAsync(
+        Guid userId,
         string prompt,
         CancellationToken cancellationToken)
     {
@@ -26,19 +27,20 @@ public class ShaderGeneratorService
 
         if (string.IsNullOrWhiteSpace(prompt))
             throw new ArgumentException("Prompt cannot be empty.");
-        
+
         var generation = new ShaderGeneration
         {
             Id = Guid.NewGuid(),
             UserId = userId,
             Prompt = prompt.Trim(),
             Status = ShaderGenerationStatus.Pending,
-            CreatedAt = DateTime.Now
+            CreatedAt = DateTime.UtcNow
         };
-        
+
         await _shaderRepository.AddAsync(
             generation,
             cancellationToken);
+
         await _publisher.PublishAsync(
             generation.Id,
             generation.UserId,
