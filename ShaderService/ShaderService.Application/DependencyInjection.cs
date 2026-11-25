@@ -10,7 +10,6 @@ public static class DependencyInjection
         this IServiceCollection services)
     {
         services.AddScoped<ShaderGeneratorService>();
-        services.AddScoped<ProcessShaderGenerationService>();
         services.AddScoped<GetShaderGenerationService>();
 
         return services;

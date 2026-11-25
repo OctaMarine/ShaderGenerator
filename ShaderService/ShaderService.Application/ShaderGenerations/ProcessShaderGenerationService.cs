@@ -8,11 +8,16 @@ namespace ShaderService.Application.ShaderGenerations;
 public class ProcessShaderGenerationService
 {
     private readonly IShaderRepository _shaderRepository;
+    private readonly IShaderAiClient _shaderAiClient;
+
 
     public ProcessShaderGenerationService(
-        IShaderRepository shaderRepository)
+        IShaderRepository shaderRepository,
+        IShaderAiClient shaderAiClient)
     {
         _shaderRepository = shaderRepository;
+        _shaderAiClient = shaderAiClient;
+
     }
 
     public async Task ProcessAsync(
@@ -40,15 +45,36 @@ public class ProcessShaderGenerationService
             generation,
             cancellationToken);
 
-        generation.GeometryType = "icosahedron";
-        generation.VertexShaderCode = GenerateVertexShaderCode();
-        generation.FragmentShaderCode = GenerateFragmentShaderCode();
+        try
+        {
+            var result = await _shaderAiClient.GenerateAsync(
+                generation.Prompt!,
+                cancellationToken);
 
-        generation.Status = ShaderGenerationStatus.Completed;
+            generation.GeometryType = result.GeometryType;
+            generation.VertexShaderCode = result.VertexShaderCode;
+            generation.FragmentShaderCode = result.FragmentShaderCode;
 
-        await _shaderRepository.UpdateAsync(
-            generation,
-            cancellationToken);
+            generation.Status = ShaderGenerationStatus.Completed;
+
+            await _shaderRepository.UpdateAsync(
+                generation,
+                cancellationToken);
+        }
+        catch (OperationCanceledException)
+        {
+            throw;
+        }
+        catch
+        {
+            generation.Status = ShaderGenerationStatus.Failed;
+
+            await _shaderRepository.UpdateAsync(
+                generation,
+                CancellationToken.None);
+
+            throw;
+        }
     }
 
     private static string GenerateVertexShaderCode()
